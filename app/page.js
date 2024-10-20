@@ -13,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     // Connexion au serveur WebSocket
-    socket = io();
+    socket = io("http://localhost:3000");
 
     // Réception des messages
     socket.on('message', (msg) => {
