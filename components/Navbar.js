@@ -8,6 +8,7 @@ const Navbar = () => {
       <Link href={"/"} className="text-2xl font-bold mb-10">Logo</Link>
       <ul className="space-y-6">
         <NavLink href="/chat">Chat</NavLink>
+        <NavLink href="/user">Test mongodb</NavLink>
       </ul>
     </nav>
   )
