@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from "react";
 import { useSocket } from "@/context/SocketContext"; // Import du contexte
+import { motion } from "framer-motion";
 
 export default function Chat() {
   const socket = useSocket(); // Récupération du socket via le contexte
@@ -40,7 +41,16 @@ export default function Chat() {
 
   return (
     <div className="flex items-center w-full justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-4 bg-white rounded-lg shadow-md">
+      <motion.div
+        className="w-full max-w-md p-4 bg-white rounded-lg shadow-md"
+        initial={{ scale: 0, rotate: -90 }}
+        animate={{ rotate: 0, scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
+      >
         <h1 className="text-2xl font-bold text-center mb-4">
           Chat en temps réel
         </h1>
@@ -91,7 +101,7 @@ export default function Chat() {
             </div>
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }
