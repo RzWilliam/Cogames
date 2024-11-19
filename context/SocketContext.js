@@ -14,12 +14,13 @@ export const SocketProvider = ({ children }) => {
   useEffect(() => {
     const newSocket = io("http://localhost:3002");
     setSocket(newSocket);
-    return () => newSocket.close(); // Fermer la connexion quand le composant est démonté
+    // Nettoyage à la déconnexion
+    return () => {
+      newSocket.disconnect();
+    };
   }, []);
 
   return (
-    <SocketContext.Provider value={socket}>
-      {children}
-    </SocketContext.Provider>
+    <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
   );
 };
